@@ -34,7 +34,6 @@ for n in imgs:
             else:
                 escala = min(verdice, 100) / 100.0
                 valor = int(255 * (1.0 - escala))
-                valor = max(0, min(255, valor))
 
             mask[y, x] = valor
 
@@ -56,5 +55,6 @@ for n in imgs:
     out = np.clip(out, 0, 255).astype(np.uint8)
     cv.imwrite(f"{n}-out.bmp", out)
     cv.imshow(f"{n} - out", out)
+    cv.imshow(f"{n} - mask", mask)
     cv.waitKey(0)
     cv.destroyAllWindows()
