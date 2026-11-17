@@ -40,15 +40,14 @@ for n in imgs:
             b_fg, g_fg, r_fg = img_fg[y, x]
             px_fg = [b_fg, g_fg, r_fg]
             
-            if (0 < valor < 255):
-                media = (b_fg + r_fg) / 2.0
-                if g_fg > media:
-                    px_fg = [b_fg, media, r_fg]
+            media = (b_fg + r_fg) / 2.0
+            if g_fg > media:
+                px_fg = [b_fg, media, r_fg]
             
             fg = valor / 255.0
-            bg = 1.0 - fg
             
             px_bg = img_bg[y, x]
+            bg = 1.0 - fg
             
             out[y, x] = (np.array(px_fg, dtype=np.float32) * fg) + (px_bg * bg)
 
