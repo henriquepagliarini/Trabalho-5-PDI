@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-imgs = [1, 4, 5, 7] 
+imgs = [0, 1, 2, 3, 4, 5, 6, 7] 
 fundo_path = 'fundo.webp'
 
 img_bg_original = cv.imread(fundo_path)
@@ -53,7 +53,7 @@ for n in imgs:
 
     out = np.clip(out, 0, 255).astype(np.uint8)
     cv.imwrite(f"{n}-out.bmp", out)
-    cv.imshow(f"{n} - out", out)
     cv.imshow(f"{n} - mask", mask)
+    cv.imshow(f"{n} - out", out)
     cv.waitKey(0)
     cv.destroyAllWindows()
